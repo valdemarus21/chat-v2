@@ -5,6 +5,7 @@ import io from 'socket.io-client';
 const socket = io.connect('http://localhost:5000');
 
 export const Chat = () => {
+	const [state, setState] = React.useState([]);
 	const { search } = useLocation();
 	const [params, setParams] = React.useState(null);
 	useEffect(() => {
@@ -15,8 +16,12 @@ export const Chat = () => {
 
 	useEffect(() => {
 		socket.on('message', ({ data }) => {
-			console.log(data);
+			setState((_state) => ({
+                ..._state, 
+                data
+            }))
 		});
 	}, []);
+    console.log(state)
 	return <></>;
 };
