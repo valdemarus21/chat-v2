@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import io from 'socket.io-client';
-
+import styles from '../styles/Chat.module.css'
 const socket = io.connect('http://localhost:5000');
 
 export const Chat = () => {
@@ -16,10 +16,10 @@ export const Chat = () => {
 
 	useEffect(() => {
 		socket.on('message', ({ data }) => {
-			setState((_state) => ({
+			setState((_state) => ([
                 ..._state, 
                 data
-            }))
+            ]))
 		});
 	}, []);
     console.log(state)
