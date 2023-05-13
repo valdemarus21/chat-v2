@@ -12,17 +12,21 @@ app.use(route);
 const io = new Server(server, {
 	cors: {
 		origin: '*',
-		methods: ["GET", "POST"]
-	}
-})
-io.on('connection', (socket)=> {
-
-	
+		methods: ['GET', 'POST'],
+	},
+});
+io.on('connection', (socket) => {
+	socket.on('join', ({ name, room }) => {
+		socket.join(room);
+		socket.emit('message', {
+			data: { user: { name: 'Admin' }, message: 'hello' + name}
+		})
+	});
 
 	io.on('disconnect', () => {
-		console.log('disconnect')
-	})
-})
+		console.log('disconnect');
+	});
+});
 server.listen(5000, () => {
 	console.log('server is running');
 });
