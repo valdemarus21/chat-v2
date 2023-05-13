@@ -15,7 +15,14 @@ const io = new Server(server, {
 		methods: ["GET", "POST"]
 	}
 })
+io.on('connection', (socket)=> {
 
+	
+
+	io.on('disconnect', () => {
+		console.log('disconnect')
+	})
+})
 server.listen(5000, () => {
 	console.log('server is running');
 });
