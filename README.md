@@ -37,6 +37,5 @@ cd client
 sudo npm start
 ```
 After these manipulations a local server will be started on your computer, where you can go and see the project, it will be available at :
-```
 http://localhost:3000/
-```
+
