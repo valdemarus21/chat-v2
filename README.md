@@ -27,6 +27,7 @@ cd client
 sudo npm i
 ```
 After that you need to run client and server parts :
+```
 cd server 
 sudo npm start dev
 ```
